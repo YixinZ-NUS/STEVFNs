@@ -9,5 +9,5 @@ Asset_Number,Asset_Class,Location_1,Location_2,Asset_Type
 7,NH3_to_HTH,0,0,0
 8,HTH_Demand,0,0,0
 9,EL_to_HTH,0,0,0
-10,CO2_Budget,0,0,10
+10,CO2_Budget,0,0,1
 11,PP_CO2,0,0,0
