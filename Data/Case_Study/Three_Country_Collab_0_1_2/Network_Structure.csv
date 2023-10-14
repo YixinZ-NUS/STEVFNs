@@ -33,3 +33,9 @@ Asset_Number,Asset_Class,Location_1,Location_2,Start_Time,End_Time,Period,Transp
 31,NH3_to_HTH,2,2,0,192,1,0
 32,EL_Demand,2,2,0,192,1,0
 33,HTH_Demand,2,2,0,192,1,0
+34,NH3_Transport,0,1,0,192,96,108
+35,EL_Transport,0,1,0,192,1,0
+36,NH3_Transport,0,2,0,192,96,108
+37,EL_Transport,0,2,0,192,1,0
+38,NH3_Transport,1,2,0,192,96,108
+39,EL_Transport,1,2,0,192,1,0
