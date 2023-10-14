@@ -18,7 +18,12 @@ from Code.Results import GMPA_costs_sizes_two_country
 
 
 #### Define Input Files ####
+# For collaboration between two countries
 case_study_name = "Two_Countries_Collab"
+
+# For the Autarky version of the two countries
+# case_study_name = "Two_Countries_Aut"
+
 
 
 base_folder = os.path.dirname(__file__)
@@ -26,8 +31,6 @@ data_folder = os.path.join(base_folder, "Data")
 case_study_folder = os.path.join(data_folder, "Case_Study", case_study_name)
 scenario_folders_list = [x[0] for x in os.walk(case_study_folder)][1:]
 network_structure_filename = os.path.join(case_study_folder, "Network_Structure.csv")
-
-
 
 
 ### Read Input Files ###
@@ -89,5 +92,23 @@ for counter1 in range(len(scenario_folders_list)):
     DPhil_Plotting.plot_asset_costs(my_network)
     
     # Export cost results to csv file
-    # GMPA_costs_sizes_two_country.export_asset_costs_two_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
-    GMPA_costs_sizes_two_country.export_asset_sizes_two_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
+    
+    if case_study_name == "Two_Countries_Collab":
+        GMPA_costs_sizes_two_country.export_asset_costs_two_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
+        GMPA_costs_sizes_two_country.export_asset_sizes_two_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
+    elif case_study_name == "Two_Country_Aut":
+        GMPA_costs_sizes_two_country.export_asset_costs_two_country_aut(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
+        GMPA_costs_sizes_two_country.export_asset_costs_two_country_aut(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
