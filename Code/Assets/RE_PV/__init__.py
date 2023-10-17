@@ -20,11 +20,15 @@ class RE_PV_Asset(Asset_STEVFNs):
     
     @staticmethod
     def cost_fun(flows, params):
+        '''Method returns the cost of PV RE asset'''
+
         return params["sizing_constant"] * flows
+
     
     def __init__(self):
         super().__init__()
-        self.cost_fun_params = {"sizing_constant": cp.Parameter(nonneg=True)}
+        self.cost_fun_params = {"sizing_constant": cp.Parameter(nonneg=True),
+                                "max_technical_capacity": cp.Parameter(nonneg=True)}
         return
         
     
@@ -34,8 +38,17 @@ class RE_PV_Asset(Asset_STEVFNs):
                                            asset_structure["End_Time"], 
                                            asset_structure["Period"])
         self.number_of_edges = len(self.node_times)
-        self.gen_profile = cp.Parameter(shape = self.number_of_edges, nonneg=True)
-        self.flows = cp.Variable(nonneg = True)#size of RE asset
+        self.gen_profile = cp.Parameter(shape = self.number_of_edges, nonneg=True) # capacity factor profile
+        
+        self.capacity = cp.Variable(nonneg = True) # variable size of RE asset
+        self.difference = cp.Variable()
+        self.difference == self.capacity - self.cost_fun_params["max_technical_capacity"]
+        if self.difference.is_nonpos():
+            # self.flows = self.capacity
+            self.flows = self.cost_fun_params["max_technical_capacity"]
+        else:
+            # self.flows = self.cost_fun_params["max_technical_capacity"]
+            self.flows = self.capacity
         return
     
     def build_edge(self, edge_number):
@@ -97,6 +110,7 @@ class RE_PV_Asset(Asset_STEVFNs):
             new_profile[new_loc_0 : new_loc_1] = full_profile[old_loc_0 : old_loc_1]
         self.gen_profile.value = new_profile[:self.number_of_edges]
         return
+
     
     def get_asset_sizes(self):
         # Returns the size of the asset as a dict #

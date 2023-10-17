@@ -88,17 +88,17 @@ for counter1 in range(len(scenario_folders_list)):
     print("Time taken to solve problem = ", end_time - start_time, "s")
     print("Total cost to satisfy all demand = ", my_network.problem.value, " Billion USD")
     # DPhil_Plotting.plot_all(my_network)
-    # DPhil_Plotting.plot_asset_sizes(my_network)
-    DPhil_Plotting.plot_asset_costs(my_network)
+    DPhil_Plotting.plot_asset_sizes(my_network)
+    # DPhil_Plotting.plot_asset_costs(my_network)
     
     # Export cost results to csv file
     
-    if case_study_name == "Two_Countries_Collab":
-        GMPA_costs_sizes_two_country.export_asset_costs_two_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
-        GMPA_costs_sizes_two_country.export_asset_sizes_two_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
-    elif case_study_name == "Two_Country_Aut":
-        GMPA_costs_sizes_two_country.export_asset_costs_two_country_aut(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
-        GMPA_costs_sizes_two_country.export_asset_costs_two_country_aut(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
+    # if case_study_name == "Two_Countries_Collab":
+    #     GMPA_costs_sizes_two_country.export_asset_costs_two_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
+    #     GMPA_costs_sizes_two_country.export_asset_sizes_two_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
+    # elif case_study_name == "Two_Country_Aut":
+    #     GMPA_costs_sizes_two_country.export_asset_costs_two_country_aut(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
+    #     GMPA_costs_sizes_two_country.export_asset_costs_two_country_aut(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
         
         
         
