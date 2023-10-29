@@ -86,11 +86,12 @@ for counter1 in range(len(scenario_folders_list)):
     print("Total cost to satisfy all demand = ", my_network.problem.value, " Billion USD")
     # DPhil_Plotting.plot_all(my_network)
     # DPhil_Plotting.plot_asset_sizes(my_network)
-    DPhil_Plotting.plot_asset_costs(my_network)
+    # DPhil_Plotting.plot_asset_costs(my_network)
     
     
     
     ### Get results for GMPA ###
     
     GMPA_costs_sizes.export_asset_costs(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
+    GMPA_costs_sizes.export_asset_sizes(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
 
