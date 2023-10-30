@@ -19,10 +19,10 @@ from Code.Results import GMPA_costs_sizes_two_country
 
 #### Define Input Files ####
 # For collaboration between two countries
-case_study_name = "Two_Countries_Collab"
+# case_study_name = "Two_Countries_Collab"
 
 # For the Autarky version of the two countries
-# case_study_name = "Two_Countries_Aut"
+case_study_name = "Two_Countries_Aut"
 
 
 
