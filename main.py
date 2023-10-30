@@ -18,7 +18,8 @@ from Code.Results import GMPA_costs_sizes
 
 
 #### Define Input Files ####
-case_study_name = "Autarky"
+# case_study_name = "Autarky_SG"
+case_study_name = "Autarky_ID"
 
 
 base_folder = os.path.dirname(__file__)
