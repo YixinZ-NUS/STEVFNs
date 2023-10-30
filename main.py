@@ -96,7 +96,7 @@ for counter1 in range(len(scenario_folders_list)):
     if case_study_name == "Two_Countries_Collab":
         GMPA_costs_sizes_two_country.export_asset_costs_two_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
         GMPA_costs_sizes_two_country.export_asset_sizes_two_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
-    elif case_study_name == "Two_Country_Aut":
+    elif case_study_name == "Two_Countries_Aut":
         GMPA_costs_sizes_two_country.export_asset_costs_two_country_aut(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
         GMPA_costs_sizes_two_country.export_asset_costs_two_country_aut(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
         
