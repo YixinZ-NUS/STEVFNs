@@ -14,7 +14,7 @@ import cvxpy as cp
 
 from Code.Network.Network import Network_STEVFNs
 from Code.Plotting import DPhil_Plotting
-from Code.Results import GMPA_costs_sizes_three_country
+from Code.Results import GMPA_Results
 
 
 #### Define Input Files ####
@@ -92,7 +92,7 @@ for counter1 in range(len(scenario_folders_list)):
 
 # Export cost results to csv file
 
-    GMPA_costs_sizes_three_country.export_results(my_network).to_csv(f'{scenario_folders_list[counter1]}_Results.csv', index = False, header=True)
+    GMPA_Results.export_results(my_network).to_csv(f'{scenario_folders_list[counter1]}_Results.csv', index = False, header=True)
    
     # if case_study_name == "Two_Countries_Collab":
     #     GMPA_costs_sizes_three_country.export_asset_costs_three_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
