@@ -14,13 +14,12 @@ import cvxpy as cp
 
 from Code.Network.Network import Network_STEVFNs
 from Code.Plotting import DPhil_Plotting
-from Code.Results import GMPA_costs_sizes
+from Code.Results import GMPA_Results
 
 
 #### Define Input Files ####
-# case_study_name = "Autarky_SG"
-case_study_name = "Autarky_ID"
-
+# case_study_name = "Autarky_ID"
+case_study_name = "Autarky_SG"
 
 base_folder = os.path.dirname(__file__)
 data_folder = os.path.join(base_folder, "Data")
@@ -87,12 +86,12 @@ for counter1 in range(len(scenario_folders_list)):
     print("Total cost to satisfy all demand = ", my_network.problem.value, " Billion USD")
     # DPhil_Plotting.plot_all(my_network)
     # DPhil_Plotting.plot_asset_sizes(my_network)
-    # DPhil_Plotting.plot_asset_costs(my_network)
+    DPhil_Plotting.plot_asset_costs(my_network)
     
-    
-    
-    ### Get results for GMPA ###
-    
-    GMPA_costs_sizes.export_asset_costs(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
-    GMPA_costs_sizes.export_asset_sizes(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
 
+
+# Export cost results to csv file
+
+    GMPA_Results.export_results(my_network).to_csv(f'{scenario_folders_list[counter1]}_Results.csv', index = False, header=True)
+   
+   
