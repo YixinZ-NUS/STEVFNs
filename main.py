@@ -14,11 +14,14 @@ import cvxpy as cp
 
 from Code.Network.Network import Network_STEVFNs
 from Code.Plotting import DPhil_Plotting
+from Code.Results import GMPA_Results
 
 
 
 #### Define Input Files ####
-case_study_name = "EM_Case_Study"
+case_study_name = "Four_Country_Collab"
+
+# case_study_name = "Four_Country_Aut"
 
 
 base_folder = os.path.dirname(__file__)
@@ -87,15 +90,8 @@ for counter1 in range(len(scenario_folders_list)):
     # DPhil_Plotting.plot_all(my_network)
     # DPhil_Plotting.plot_asset_sizes(my_network)
     DPhil_Plotting.plot_asset_costs(my_network)
-    
-# ##### Plot flows for BAU scenario ######
-# DPhil_Plotting.plot_SG_EL_input_flows_BAU(my_network)
-# DPhil_Plotting.plot_SG_EL_output_flows_BAU(my_network)
-# DPhil_Plotting.plot_RE_EL_input_flows_BAU(my_network)
-# DPhil_Plotting.plot_RE_EL_output_flows_BAU(my_network)
 
-# DPhil_Plotting.plot_SG_NH3_input_flows_BAU(my_network)
-# DPhil_Plotting.plot_SG_NH3_output_flows_BAU(my_network)
-# DPhil_Plotting.plot_RE_NH3_input_flows_BAU(my_network)
-# DPhil_Plotting.plot_RE_NH3_output_flows_BAU(my_network)
 
+    # Export cost results to csv file
+
+    GMPA_Results.export_results(my_network).to_csv(f'{scenario_folders_list[counter1]}_Results.csv', index = False, header=True)
