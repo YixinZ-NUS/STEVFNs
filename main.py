@@ -18,8 +18,8 @@ from Code.Results import GMPA_Results
 
 
 #### Define Input Files ####
-case_study_name = "Three_Country_Collab_0_1_2"
-
+# case_study_name = "Three_Country_Collab_0_1_2"
+case_study_name = "Three_Country_Aut"
 
 base_folder = os.path.dirname(__file__)
 data_folder = os.path.join(base_folder, "Data")
@@ -94,12 +94,4 @@ for counter1 in range(len(scenario_folders_list)):
 
     GMPA_Results.export_results(my_network).to_csv(f'{scenario_folders_list[counter1]}_Results.csv', index = False, header=True)
    
-    # if case_study_name == "Two_Countries_Collab":
-    #     GMPA_costs_sizes_three_country.export_asset_costs_three_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
-    #     GMPA_costs_sizes_three_country.export_asset_sizes_three_country(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
-    # elif case_study_name == "Two_Countries_Aut":
-    #     GMPA_costs_sizes_three_country.export_asset_costs_three_country_aut(my_network).to_csv(f'{scenario_folders_list[counter1]}_Costs.csv', index = False, header=True)
-    #     GMPA_costs_sizes_three_country.export_asset_costs_three_country_aut(my_network).to_csv(f'{scenario_folders_list[counter1]}_Sizes.csv', index = False, header=True)
-    
-    
-
+   
