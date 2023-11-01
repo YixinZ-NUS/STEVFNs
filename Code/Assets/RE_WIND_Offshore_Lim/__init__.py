@@ -14,7 +14,7 @@ from ...Network import Edge_STEVFNs
 
 
 class RE_WIND_Offshore_Lim_Asset(Asset_STEVFNs):
-    """Class of Renewable Energy Sources with maximum capacity """
+    """Class of Renewable Energy Sources """
     asset_name = "RE_WIND_Offshore_Lim"
     target_node_type = "EL"
     source_node_type_2 = "NULL"
