@@ -19,7 +19,8 @@ from Code.Results import GMPA_Results
 
 #### Define Input Files ####
 # case_study_name = "Autarky_ID"
-case_study_name = "Autarky_SG"
+# case_study_name = "Autarky_SG"
+case_study_name = "Autarky_MY"
 
 base_folder = os.path.dirname(__file__)
 data_folder = os.path.join(base_folder, "Data")
@@ -86,7 +87,7 @@ for counter1 in range(len(scenario_folders_list)):
     print("Total cost to satisfy all demand = ", my_network.problem.value, " Billion USD")
     # DPhil_Plotting.plot_all(my_network)
     # DPhil_Plotting.plot_asset_sizes(my_network)
-    DPhil_Plotting.plot_asset_costs(my_network)
+    # DPhil_Plotting.plot_asset_costs(my_network)
     
 
 
