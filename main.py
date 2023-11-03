@@ -19,11 +19,16 @@ from Code.Results import GMPA_Results
 
 #### Define Input Files ####
 
-# For collaboration between two countries
-# case_study_name = "Two_Countries_Collab"
+# For autarky between two countries
+# case_study_name = "SGP-IDN_Aut"
+# case_study_name = "SGP-MYS_Aut"
+# case_study_name = "MYS-IDN_Aut"
 
-# For the Autarky version of the two countries
-case_study_name = "Two_Countries_Aut"
+
+# For the collaboration version of the two countries
+case_study_name = "SGP-IDN_Collab"
+# case_study_name = "SGP-MYS_Collab"
+# case_study_name = "MYS-IDN_Collab"
 
 
 
@@ -93,9 +98,9 @@ for counter1 in range(len(scenario_folders_list)):
     # DPhil_Plotting.plot_asset_costs(my_network)
     
     # Export cost results to csv file
-     GMPA_Results.export_results(my_network).to_csv(f'{scenario_folders_list[counter1]}_Results.csv', index = False, header=True)
+    # GMPA_Results.export_results(my_network).to_csv(f'{scenario_folders_list[counter1]}_Results.csv', index = False, header=True)
     
-        
+
         
         
         
