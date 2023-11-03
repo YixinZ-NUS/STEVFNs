@@ -26,6 +26,7 @@ data_folder = os.path.join(base_folder, "Data")
 case_study_folder = os.path.join(data_folder, "Case_Study", case_study_name)
 scenario_folders_list = [x[0] for x in os.walk(case_study_folder)][1:]
 network_structure_filename = os.path.join(case_study_folder, "Network_Structure.csv")
+results_filename = os.path.join(case_study_folder, "total_data.csv")
 
 
 
@@ -51,7 +52,7 @@ print("Time taken to build network = ", end_time - start_time, "s")
 for counter1 in range(len(scenario_folders_list)):
 # for counter1 in range(1):
     ### Read Input Files ###
-    scenario_folder = scenario_folders_list[counter1]
+    scenario_folder = scenario_folders_list[-1-counter1]
     asset_parameters_filename = os.path.join(scenario_folder, "Asset_Parameters.csv")
     location_parameters_filename = os.path.join(scenario_folder, "Location_Parameters.csv")
     system_parameters_filename = os.path.join(scenario_folder, "System_Parameters.csv")
@@ -67,6 +68,7 @@ for counter1 in range(len(scenario_folders_list)):
     
     my_network.update(location_parameters_df, asset_parameters_df, system_parameters_df)
     my_network.scenario_name = os.path.basename(scenario_folder)
+    # results_filename = os.path.join(case_study_folder, "total_data_" + my_network.scenario_name + r".csv")
     
     
     end_time = time.time()
@@ -84,14 +86,24 @@ for counter1 in range(len(scenario_folders_list)):
     ### Plot Results ############
     print("Time taken to solve problem = ", end_time - start_time, "s")
     print("Total cost to satisfy all demand = ", my_network.problem.value, " Billion USD")
+    if my_network.problem.value == float("inf"):
+        break
     # DPhil_Plotting.plot_all(my_network)
     # DPhil_Plotting.plot_asset_sizes(my_network)
     DPhil_Plotting.plot_asset_costs(my_network)
     
+    # Export cost results to pandas dataframe
+
+    # GMPA_Results.export_results(my_network).to_csv(f'{scenario_folders_list[counter1]}_Results.csv', index = False, header=True)
+    t_df = GMPA_Results.export_total_data(my_network, location_parameters_df, asset_parameters_df)
+    if counter1 ==0:
+        total_df = t_df
+    else:
+        total_df = pd.concat([total_df, t_df], ignore_index=True)
 
 
-# Export cost results to csv file
+#### Save Results
 
-    GMPA_Results.export_results(my_network).to_csv(f'{scenario_folders_list[counter1]}_Results.csv', index = False, header=True)
+total_df.to_csv(results_filename, index=False, header=True)
    
    
