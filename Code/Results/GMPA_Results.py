@@ -7,7 +7,7 @@ Created on Tue Oct 31 10:49:50 2023
 """
 
 import pandas as pd
-
+import numpy as np
 
 
 def export_results(my_network):
@@ -148,15 +148,14 @@ def export_total_data(my_network, location_parameters_df, asset_parameters_df):
             technology_name = name + r"_[" + loc_name + r"]"
             technology_cost = asset.cost.value
         
-        
+        N = np.ceil(my_network.system_parameters_df.loc["project_life", "value"]/8760) #number of years for the project
         t_df = pd.DataFrame({"country_1": [loc_names_list[0]],
                              "country_2": [loc_names_list[1]],
                              "country_3": [loc_names_list[2]],
                              "country_4": [loc_names_list[3]],
-                             "collaboration_emissions": [collaboration_emissions],
-                             "technology_cost": [technology_cost],
+                             "collaboration_emissions": [collaboration_emissions/N/1e3],# Number is annualized, number is converted from ktCO2e to MtCO2e
+                             "technology_cost": [technology_cost/N],# Number is annualized
                              "technology_name": [technology_name],
             })
         total_data_df = pd.concat([total_data_df, t_df], ignore_index=True)
     return total_data_df
-    
