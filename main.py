@@ -98,7 +98,7 @@ for counter1 in range(len(scenario_folders_list)):
     # DPhil_Plotting.plot_asset_costs(my_network)
     
     # Export cost results to csv file
-    # GMPA_Results.export_results(my_network).to_csv(f'{scenario_folders_list[counter1]}_Results.csv', index = False, header=True)
+    GMPA_Results.export_total_data(my_network, location_parameters_df, asset_parameters_df).to_csv('Results.csv', index = False, header=True)
     
 
         
