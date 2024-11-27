@@ -1,0 +1,7 @@
+country_1,country_2,country_3,country_4,collaboration_emissions,technology_cost,technology_name
+SG,MY,,,37.7,593863.3,PP_CO2_[SG]
+SG,MY,,,37.7,622142.5,PP_CO2_[SG]
+SG,MY,,,37.7,0.0,BESS_[SG]
+SG,MY,,,37.7,0.0,EL_Demand_[SG]
+SG,MY,,,37.7,0.0,EL_Transport_[SG-MY]
+SG,MY,,,37.7,0.0,RE_WIND_Onshore_BAU_[MY]

@@ -21,7 +21,7 @@ from Code.Results import GMPA_Results
 #### Define Input Files ####
 # case_study_name = "BAU_No_Action"
 # case_study_name = "Autarky_KR"
-case_study_name = "BN-ID_Autarky"
+case_study_name = "GMPA_Simple"
 # case_study_name = "KR-PH-MY_Collab"
 # case_study_name = "KR-ID-PH-MY_Autarky"
 # case_study_name = "KR-ID-PH-MY_Collab"
@@ -87,10 +87,10 @@ for counter1 in range(len(scenario_folders_list)):
     
     
     # my_network.solve_problem()
-    # my_network.problem.solve(solver = cp.ECOS, warm_start=True, max_iters=100000000, verbose=True,
-    #                           ignore_dpp=True,# Uncomment to disable DPP. DPP will make the first scenario run slower, but subsequent scenarios will run significantly faster.
-    #                           )
-    my_network.problem.solve(solver = cp.CLARABEL, max_iter=10000)
+    my_network.problem.solve(solver = cp.ECOS, warm_start=True, max_iters=100000000, verbose=True,
+                               ignore_dpp=True,# Uncomment to disable DPP. DPP will make the first scenario run slower, but subsequent scenarios will run significantly faster.
+                               )
+    # my_network.problem.solve(solver = cp.CLARABEL, max_iter=10000)
     # my_network.problem.solve(solver = cp.SCS, warm_start=True, max_iters=100000, ignore_dpp=True, verbose=False)
     # my_network.problem.solve(solver = cp.MOSEK)
     end_time = time.time()
@@ -102,11 +102,15 @@ for counter1 in range(len(scenario_folders_list)):
     print(my_network.problem.solution.status)
     if my_network.problem.value == float("inf"):
         continue
+    for asset in my_network.assets:
+        print(f"\nAsset: {asset.asset_name}")
+        print("Flow values:")
+        print(asset.get_plot_data())
     # print("Total cost to satisfy all demand = ", my_network.problem.value, " Billion USD")
     # print("Total emissions = ", my_network.assets[0].asset_size(), "MtCO2e")
     # DPhil_Plotting.plot_all(my_network)
-    # DPhil_Plotting.plot_asset_sizes(my_network)
-    # DPhil_Plotting.plot_asset_costs(my_network)
+    DPhil_Plotting.plot_asset_sizes(my_network)
+    DPhil_Plotting.plot_asset_costs(my_network)
 
     
     ### Export cost results to pandas dataframe per scenario and concat all scenarios
